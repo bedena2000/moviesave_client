@@ -1,0 +1,30 @@
+/* body.swiper.swiper-button-prev {
+  display: none;
+} */
+
+.swiper-slider-card {
+  border: 1px solid black;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+  width: 100%;
+  height: 400px;
+}
+
+.swiper-slider-card > img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+
+.swiper-slide-prev {
+  /* width: 10%; */
+}
+
+.swiper-slide-active {
+  /* width: 80%; */
+}
+
+.swiper-slide-next {
+  /* width: 10%; */
+}
