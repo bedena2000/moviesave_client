@@ -18,9 +18,10 @@ import { Navigation } from "swiper/modules";
 
 // Hooks
 
-export const MainSlider: FC<MainSliderProps> = ({ title = "" }) => {
+export const MainSlider: FC<MainSliderProps> = ({ title = "", list = [] }) => {
   const [scrollEnd, setScrollEnd] = useState(false);
   const [scrollBeggining, setScrollBeggining] = useState(false);
+
   return (
     <div className="p-4 mt-4">
       <div
@@ -41,8 +42,13 @@ export const MainSlider: FC<MainSliderProps> = ({ title = "" }) => {
           //   setScrollEnd(false);
           //   setScrollBeggining(false);
           // }}
-          onReachEnd={() => {
-            setScrollEnd(true);
+          onReachEnd={(swiper) => {
+            if (swiper.isBeginning) {
+              setScrollEnd(false);
+              setScrollBeggining(true);
+            } else {
+              setScrollEnd(true);
+            }
           }}
           onReachBeginning={() => {
             setScrollBeggining(true);
@@ -58,45 +64,40 @@ export const MainSlider: FC<MainSliderProps> = ({ title = "" }) => {
             prevEl: "#swiper-back",
           }}
         >
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
-          <SwiperSlide className="slider-poster-element">
-            <PosterElement image={MyImage} />
-          </SwiperSlide>
+          {list.length === 0 ? (
+            <p>Loading...</p>
+          ) : (
+            list.map((item) => {
+              const movieYear = item["release_date"]
+                ? item["release_date"].split("-")[0]
+                : item["first_air_date"]
+                ? item["first_air_date"].split("-")[0]
+                : "";
+              const movieName = item["title"]
+                ? item["title"]
+                : item["name"]
+                ? item["name"]
+                : "";
+              const movieRate = item["vote_average"].toString().slice(0, 3);
+              const imgPath = `https://image.tmdb.org/t/p/w500/${item["poster_path"]}`;
+              return (
+                <SwiperSlide
+                  key={item.id}
+                  className="slider-poster-element cursor-pointer hover:z-20 transition ease-in duration-200 rounded-lg overflow-hidden hover:border-slate-400 hover:border-2"
+                >
+                  <PosterElement
+                    elementInfo={{
+                      id: item.id,
+                      rate: movieRate,
+                      title: movieName,
+                      year: movieYear,
+                    }}
+                    image={imgPath}
+                  />
+                </SwiperSlide>
+              );
+            })
+          )}
 
           <div
             id="swiper-back"

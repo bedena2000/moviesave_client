@@ -44,13 +44,13 @@ export const MovieSlider = () => {
         modules={[Navigation, Autoplay]}
         effect="cards3D"
         spaceBetween={20}
-        slidesPerView={4}
+        slidesPerView={1}
         centeredSlides={true}
         keyboard={true}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         allowSlideNext={true}
-        loop={true}
+        // loop={true}
         autoplay={{
           delay: 3000, // Delay between transitions (milliseconds)
           disableOnInteraction: false, // Stop autoplay on user interaction

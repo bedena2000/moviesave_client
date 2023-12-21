@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
 import moviedb from "../data/index";
 
-export const useMovieListHook = () => {
+export const useUpcomingMovies = () => {
   const {
     data: movieList,
     error,
     isLoading,
-  } = useQuery("getMovieList", moviedb.GetAllMovies);
+  } = useQuery("getUpcomingMovies", moviedb.GetUpcomingMovies);
 
   return {
     movieList,
