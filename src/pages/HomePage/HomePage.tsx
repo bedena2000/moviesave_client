@@ -4,21 +4,14 @@ import { Header } from "../../components";
 import { MovieSlider } from "../../components";
 import { GenresSlider } from "../../components";
 import { MainSlider } from "../../components/custom/MainSlider";
+import { Footer } from "../../components/shared/Footer";
 
 // Hooks
-import { useTopRatedMovies } from "../../hooks/useTopRatedMovies";
-import { usePopularMovie } from "../../hooks/usePopularMovies";
-import { useUpcomingMovies } from "../../hooks/useUpcomingMovies";
-import { usePopularTvSeries } from "../../hooks/usePopularTvSeries";
-import { useAnimationMovies } from "../../hooks/useAnimationMovies";
+import { useDataHook } from "./utils/hooks/useDataHook";
 
 export const HomePage = () => {
-  const popularMovies = usePopularMovie();
-  const topRatedMovies = useTopRatedMovies();
-  const upcomingMovies = useUpcomingMovies();
-  const popularTvSeries = usePopularTvSeries();
-  const animationMovies = useAnimationMovies();
-  console.log(animationMovies);
+  const data = useDataHook();
+
   return (
     <div>
       <Header />
@@ -26,24 +19,31 @@ export const HomePage = () => {
       <GenresSlider />
       <MainSlider
         title="New Movies"
-        list={popularMovies.movieList ? popularMovies.movieList : []}
+        list={data.popularMovies.movieList ? data.popularMovies.movieList : []}
       />
       <MainSlider
         title="Top Rated"
-        list={topRatedMovies.movieList ? topRatedMovies.movieList : []}
+        list={
+          data.topRatedMovies.movieList ? data.topRatedMovies.movieList : []
+        }
       />
       <MainSlider
         title="Upcoming"
-        list={upcomingMovies.movieList ? upcomingMovies.movieList : []}
+        list={
+          data.upcomingMovies.movieList ? data.upcomingMovies.movieList : []
+        }
       />
       <MainSlider
         title="Popular Series"
-        list={popularTvSeries.movieList ? popularTvSeries.movieList : []}
+        list={
+          data.popularTvSeries.movieList ? data.popularTvSeries.movieList : []
+        }
       />
       <MainSlider
         title="Animation"
-        list={animationMovies.genres ? animationMovies.genres : []}
+        list={data.animationMovies.genres ? data.animationMovies.genres : []}
       />
+      <Footer />
     </div>
   );
 };

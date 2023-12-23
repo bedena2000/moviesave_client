@@ -33,7 +33,7 @@ export const PosterElement: FC<PosterElementProps> = ({
         <p>{elementInfo.year}</p>
         <p>{elementInfo.title}</p>
       </div>
-      <img src={image} alt="image" className="w-full h-full object-cover" />
+      <img src={image} alt="image" className="w-full h-[400px] object-cover" />
     </div>
   );
 };

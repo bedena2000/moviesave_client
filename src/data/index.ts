@@ -59,7 +59,6 @@ const GetUpcomingMovies = async () => {
 const GetPopularTvSeries = async () => {
   try {
     const result = await baseUrl.get(`tv/popular`, options);
-    console.log(result);
     return result.data.results;
   } catch (error) {
     console.log(error);
@@ -69,7 +68,6 @@ const GetPopularTvSeries = async () => {
 const GetAnimationMovies = async () => {
   try {
     const result = await baseUrl.get(`discover/movie?with_genres=16`, options);
-    console.log(result);
     return result.data.results;
   } catch (error) {
     console.log(error);

@@ -15,6 +15,7 @@ import MyImage from "../../../assets/img/poste.webp";
 // Types
 import { MainSliderProps } from "./utils/types/MainSlider";
 import { Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 // Hooks
 
@@ -25,7 +26,7 @@ export const MainSlider: FC<MainSliderProps> = ({ title = "", list = [] }) => {
   return (
     <div className="p-4 mt-4">
       <div
-        className={` transition ease-in duration-100  cursor-pointer flex items-center gap-2 hover:gap-3`}
+        className={` transition ease-in duration-100  cursor-pointer flex items-center gap-2 yt`}
       >
         <h2 className="text-white text-3xl font-quicksand font-bold">
           {title}
@@ -83,17 +84,19 @@ export const MainSlider: FC<MainSliderProps> = ({ title = "", list = [] }) => {
               return (
                 <SwiperSlide
                   key={item.id}
-                  className="slider-poster-element cursor-pointer hover:z-20 transition ease-in duration-200 rounded-lg overflow-hidden hover:border-slate-400 hover:border-2"
+                  className="slider-poster-element cursor-pointer hover:z-20 transition ease-in duration-200 rounded-lg overflow-hidden"
                 >
-                  <PosterElement
-                    elementInfo={{
-                      id: item.id,
-                      rate: movieRate,
-                      title: movieName,
-                      year: movieYear,
-                    }}
-                    image={imgPath}
-                  />
+                  <Link to={`/movie/${item.id}`}>
+                    <PosterElement
+                      elementInfo={{
+                        id: item.id,
+                        rate: movieRate,
+                        title: movieName,
+                        year: movieYear,
+                      }}
+                      image={imgPath}
+                    />
+                  </Link>
                 </SwiperSlide>
               );
             })

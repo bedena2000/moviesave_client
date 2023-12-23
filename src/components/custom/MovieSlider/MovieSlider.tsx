@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 // import "swiper/css/scrollbar";
 import "./utils/styling/MovieSliderStyle.css";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { LoadImage } from "../../../components";
 import SliderBackgroundImage from "../../../assets/img/slider-background.jpg";
 import SliderRow from "../../../assets/img/home.svg";
@@ -20,7 +20,7 @@ export const MovieSlider = () => {
 
   let updatedMovieList = [];
   if (movieList) {
-    updatedMovieList = movieList.splice(0, 6);
+    updatedMovieList = movieList.slice(0, 6);
   }
 
   if (isLoading) {
@@ -36,21 +36,19 @@ export const MovieSlider = () => {
       </div>
     );
   }
-
   return (
     <div className="">
       <Swiper
         // install Swiper modules
         modules={[Navigation, Autoplay]}
-        effect="cards3D"
         spaceBetween={20}
-        slidesPerView={1}
+        slidesPerView={3}
         centeredSlides={true}
         keyboard={true}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         allowSlideNext={true}
-        // loop={true}
+        loop={true}
         autoplay={{
           delay: 3000, // Delay between transitions (milliseconds)
           disableOnInteraction: false, // Stop autoplay on user interaction
