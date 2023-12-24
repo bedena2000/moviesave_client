@@ -2,6 +2,10 @@ import React from "react";
 import HomeIconProps from "./utils/types/types";
 import { Link } from "react-router-dom";
 
+// Context
+import { AppContext } from "../../../../context/Context";
+import { useContext } from "react";
+
 // Hooks
 import useIcon from "./utils/hooks/useIcon";
 
@@ -9,11 +13,11 @@ export const HomeIcon: React.FC<HomeIconProps> = ({
   className = "",
   size = 40,
   color = "#1C274C",
-  onClick = () => console.log("hello it is icon"),
   onHover = true,
 }) => {
   const { isHovered, changeHover } = useIcon();
-
+  const { state, dispatch } = useContext(AppContext);
+  
   return (
     <Link to="/">
       <svg
@@ -22,7 +26,7 @@ export const HomeIcon: React.FC<HomeIconProps> = ({
       `}
         onMouseMove={() => changeHover(true)}
         onMouseLeave={() => changeHover(false)}
-        onClick={onClick}
+        
         width={`${size}px`}
         height={`${size}px`}
         viewBox="0 0 24 24"

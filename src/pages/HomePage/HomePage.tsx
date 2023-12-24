@@ -1,19 +1,27 @@
 // Components
 
+import { useState } from "react";
 import { Header } from "../../components";
 import { MovieSlider } from "../../components";
 import { GenresSlider } from "../../components";
 import { MainSlider } from "../../components/custom/MainSlider";
 import { Footer } from "../../components/shared/Footer";
+import { SearchPage } from "../../components/custom/SearchPage";
+import { useContext } from "react";
+import { AppContext } from "../../context/Context";
 
 // Hooks
 import { useDataHook } from "./utils/hooks/useDataHook";
 
 export const HomePage = () => {
   const data = useDataHook();
-
+  const {state, dispatch} = useContext(AppContext);
+  
   return (
     <div>
+      {
+        state?.modal ? <SearchPage /> : null
+      }
       <Header />
       <MovieSlider />
       <GenresSlider />
@@ -44,6 +52,7 @@ export const HomePage = () => {
         list={data.animationMovies.genres ? data.animationMovies.genres : []}
       />
       <Footer />
+      {/* Search Modal */}
     </div>
   );
 };

@@ -1,16 +1,26 @@
 import { FC } from "react";
+
+// Context
+import { AppContext } from "../../../context/Context";
+import { useContext } from "react";
+
 // Types
 import { SearchProps } from "./utils/types/SearchProps";
 
 export const Search: FC<SearchProps> = ({
   color = "white",
-  onClick = () => console.log('search clicked'),
+  onClick = () => console.log("search clicked"),
   size = "30",
   classNames,
 }) => {
+  const { state, dispatch } = useContext(AppContext);
   return (
     <svg
-      onClick={onClick}
+      onClick={() =>
+        dispatch({
+          type: "changeModal",
+        })
+      }
       width={size + "px"}
       height={size + "px"}
       viewBox="0 0 24 24"

@@ -2,6 +2,7 @@ import React from "react";
 
 // Components
 import { Header } from "../../components/shared/Header";
+import { Footer } from "../../components/shared/Footer";
 
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
@@ -9,6 +10,7 @@ import { IoHomeOutline } from "react-icons/io5";
 export function ErrorPage() {
   return (
     <div className="min-h-screen">
+      
       <Header />
       <div
         className="w-full bg-black flex items-center justify-center"
@@ -26,6 +28,7 @@ export function ErrorPage() {
           </Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
