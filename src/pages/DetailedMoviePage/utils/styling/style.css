@@ -1,0 +1,43 @@
+.detailedBackground {
+  position: relative;
+}
+
+.detailedBackground::before {
+  content: "";
+  width: 50%;
+  height: 100%;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(194, 194, 194, 0.6166841736694677) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.movieDetailsWrapper {
+  position: relative;
+}
+
+.detailedBackground::after {
+  content: "";
+  width: 100%;
+  height: 11%;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    360deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(255, 255, 255, 0) 39%
+  );
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.detailedInfo {
+  height: 420px;
+}

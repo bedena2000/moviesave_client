@@ -2,6 +2,7 @@
 import { NavigationProps } from "./utils/types/NavigationProps";
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export const Navigation: FC<NavigationProps> = ({
   distance = "6",
@@ -9,6 +10,8 @@ export const Navigation: FC<NavigationProps> = ({
   isLink = false,
   color = "white",
 }) => {
+  const { pathname } = useLocation();
+
   if (isLink) {
     return (
       <nav style={{ gap: distance + "px" }} className={`flex items-center`}>
@@ -18,7 +21,7 @@ export const Navigation: FC<NavigationProps> = ({
             key={item.title}
             to={item.path}
             style={{
-              color: color,
+              color: item.path === pathname ? "red" : color,
             }}
           >
             {item.title}

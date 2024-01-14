@@ -9,7 +9,7 @@ export const PosterElement: FC<PosterElementProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
-      className="cursor-pointer transition ease-in duration-100"
+      className="cursor-pointer relative transition ease-in duration-100"
       onMouseMove={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -33,7 +33,7 @@ export const PosterElement: FC<PosterElementProps> = ({
         <p>{elementInfo.year}</p>
         <p>{elementInfo.title}</p>
       </div>
-      <img src={image} alt="image" className="w-full h-[400px] object-cover" />
+      <img src={image} alt="image" className="w-full object-cover" />
     </div>
   );
 };

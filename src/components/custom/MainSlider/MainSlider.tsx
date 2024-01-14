@@ -86,7 +86,7 @@ export const MainSlider: FC<MainSliderProps> = ({ title = "", list = [] }) => {
                   key={item.id}
                   className="slider-poster-element cursor-pointer hover:z-20 transition ease-in duration-200 rounded-lg overflow-hidden"
                 >
-                  <Link to={`/movie/${item.id}`}>
+                  <Link to={`movies/${item.id}`}>
                     <PosterElement
                       elementInfo={{
                         id: item.id,

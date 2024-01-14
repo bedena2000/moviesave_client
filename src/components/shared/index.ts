@@ -4,3 +4,4 @@ export * from "./Search";
 export * from "./Profile";
 export * from "./LoadImage";
 export * from "./GenreElement";
+export * from './WatchingSettings';

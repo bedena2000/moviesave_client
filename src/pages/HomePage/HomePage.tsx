@@ -24,7 +24,6 @@ export const HomePage = () => {
       }
       <Header />
       <MovieSlider />
-      <GenresSlider />
       <MainSlider
         title="New Movies"
         list={data.popularMovies.movieList ? data.popularMovies.movieList : []}

@@ -3,14 +3,19 @@ import React from "react";
 // Components
 import { Header } from "../../components/shared/Header";
 import { Footer } from "../../components/shared/Footer";
+import { SearchPage } from "@/components/custom/SearchPage";
+import { useContext } from "react";
+import { AppContext } from "@/context/Context";
 
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 
 export function ErrorPage() {
+  const { state, dispatch } = useContext(AppContext);
+  
   return (
     <div className="min-h-screen">
-      
+      {state?.modal ? <SearchPage /> : null}
       <Header />
       <div
         className="w-full bg-black flex items-center justify-center"

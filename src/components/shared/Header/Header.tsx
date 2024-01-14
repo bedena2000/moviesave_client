@@ -12,7 +12,6 @@ import { Profile } from "../Profile";
 
 // Types
 import { HeaderProps } from "./utils/types/HeaderProps";
-import { log } from "console";
 
 export const Header = () => {
   const list = [
@@ -25,19 +24,19 @@ export const Header = () => {
       path: "/movies",
     },
     {
-      title: "TV SHOWS",
+      title: "Tv Series",
       path: "/tvseries",
     },
     {
-      title: "browse",
-      path: "/browse",
+      title: "Animations",
+      path: "/animations",
     },
   ];
 
-  const {state, dispatch} = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
   return (
-    <header className="flex items-center justify-between bg-black p-4">
+    <header className="items-center justify-between bg-black p-4 flex ">
       <div className="flex items-center gap-4">
         <div>
           <HomeIcon />
@@ -51,9 +50,6 @@ export const Header = () => {
       <div className="flex items-center gap-4">
         <div>
           <Search />
-        </div>
-        <div>
-          <Profile />
         </div>
       </div>
     </header>

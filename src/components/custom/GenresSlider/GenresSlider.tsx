@@ -32,7 +32,7 @@ export const GenresSlider = () => {
       <Swiper spaceBetween={40} slidesPerView="7" centeredSlides={false}>
         {genresList.map((item) => (
           <SwiperSlide key={item.id} className=" items-center">
-            <Link to={`/genre/${item.id}`} className="">
+            <Link to={`/movies?genre=${item.name}`} className="">
               <GenreElement
                 title={item.name}
                 GenreIcon={item.icon}

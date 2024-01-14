@@ -57,12 +57,22 @@ export const MovieSlider = () => {
           nextEl: "#swiper-forward",
           prevEl: "#swiper-back",
         }}
+        breakpoints={{
+          200: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          800: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+        }}
       >
         {updatedMovieList.map((item) => {
           const MovieDate = item["release_date"].substring(0, 4);
           return (
             <SwiperSlide className="swiper-slider-card" key={item.id}>
-              <Link to={`/movie/${item.id}`} className="w-ful h-full block">
+              <Link to={`movies/${item.id}`} className="w-ful h-full block">
                 <LoadImage
                   path={"https://image.tmdb.org/t/p/w500" + item.poster_path}
                   altImage="backgroundSliderImage"
