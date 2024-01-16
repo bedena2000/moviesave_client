@@ -30,7 +30,7 @@ export const ActorPage = () => {
 
   const indexOfDot = actorInfo?.biography.indexOf(".");
   const ActorBiography = actorInfo?.biography.slice(0, indexOfDot);
-  console.log(actorInfo);
+  
 
   return (
     <div>

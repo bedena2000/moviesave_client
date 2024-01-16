@@ -9,19 +9,24 @@ import { Footer } from "../../components/shared/Footer";
 import { SearchPage } from "../../components/custom/SearchPage";
 import { useContext } from "react";
 import { AppContext } from "../../context/Context";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 
 // Hooks
 import { useDataHook } from "./utils/hooks/useDataHook";
 
 export const HomePage = () => {
   const data = useDataHook();
-  const {state, dispatch} = useContext(AppContext);
-  
+  const { state, dispatch } = useContext(AppContext);
+
+  const { scrollYProgress } = useScroll();
+
   return (
-    <div>
-      {
-        state?.modal ? <SearchPage /> : null
-      }
+    <motion.div className="pt-3">
+      <motion.div
+        className="h-3 bg-slate-500 fixed top-0 left-0 origin-[0%] z-50"
+        style={{ scaleX: scrollYProgress }}
+      ></motion.div>
+      {state?.modal ? <SearchPage /> : null}
       <Header />
       <MovieSlider />
       <MainSlider
@@ -51,8 +56,8 @@ export const HomePage = () => {
         list={data.animationMovies.genres ? data.animationMovies.genres : []}
       />
       <Footer />
-      {/* Search Modal */}
-    </div>
+      {/* Search Modal */}  
+    </motion.div>
   );
 };
 

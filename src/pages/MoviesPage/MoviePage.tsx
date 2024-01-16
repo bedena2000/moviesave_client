@@ -22,13 +22,12 @@ import { Loading } from "@/components/shared/Loading";
 
 export const MoviePage: FC<MoviePageProps> = ({ title = "" }) => {
   const [movieList, setMovieList] = useState(null);
-  console.log("hello");
+ 
   useEffect(() => {
     api
       .GetMovieList(title)
       .then((data) => {
         setMovieList(data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);

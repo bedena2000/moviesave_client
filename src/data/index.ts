@@ -102,7 +102,6 @@ const GetMovieList = async (keyword: string) => {
       requestPath = `/discover/movie?with_genres=16&page=20`;
     }
     const result = await baseUrl.get(requestPath, options);
-    console.log(result);
     return result.data.results;
   } catch (error) {
     console.log(error);
@@ -147,7 +146,6 @@ const searchMovieById = async (movieId: number) => {
       images: result.data.images.backdrops,
       cast: result.data.credits.cast,
     };
-    console.log(movieObject);
     return movieObject;
   } catch (error) {
     console.log(error);

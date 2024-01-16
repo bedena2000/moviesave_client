@@ -109,22 +109,22 @@ export const DetailedMoviePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(movieId);
+        
         if (!movieId) {
           navigate("/errorPage");
           return;
         }
         const data = await api.searchMovieById(movieId);
         if (data) {
-          console.log(data);
+         
           setMovieData(data);
         } else {
           navigate("/errorPage");
           return;
         }
-        console.log(data);
+       
       } catch (error) {
-        console.log("hello");
+        
         navigate("/errorPage");
         return;
         console.log(error);
@@ -215,7 +215,7 @@ export const DetailedMoviePage = () => {
             <button
               className="bg-white p-2 rounded hover:opacity-100 opacity-80 flex items-center gap-2 font-font-bebas text-md outline-none"
               onClick={() => {
-                console.log("clicked");
+                
                 setIsTrailer(true);
               }}
             >
